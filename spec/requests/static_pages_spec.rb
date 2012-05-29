@@ -15,7 +15,6 @@ describe "Static Pages" do
 						:text => "Ruby on Rails Tutorial Sample App | Home")
 	end
   end
-
   
 
   describe "Help Page" do
@@ -38,6 +37,7 @@ describe "Static Pages" do
 	  visit '/static_pages/about'
 	  page.should have_selector('h1', :text => 'About Us')
 	end
+	
 	it "should have the title 'About Us'" do
       visit '/static_pages/about'
 	  page.should have_selector('title', 
