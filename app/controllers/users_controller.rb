@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def create
 	@user = User.new(params[:user])
   	if @user.save
+	  sign_in @user
 	  flash[:success] = "Welcome to the Sample App!"
 	  redirect_to @user
 	else
@@ -19,6 +20,6 @@ class UsersController < ApplicationController
   
   def index 
     @users = User.all
-    render 'index'
+    render 'index'		# N.B. Not needed! :) Here to remember learning.
   end	  
 end

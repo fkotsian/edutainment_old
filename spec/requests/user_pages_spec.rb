@@ -56,6 +56,8 @@ describe "User pages" do
 		
 		it { should have_selector('title', text: user.name) }
 		it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+		
+		it { should have_link('Sign out') }		# Checks if newly created users get logged in automatically after creation
 	  end
     end
   end
