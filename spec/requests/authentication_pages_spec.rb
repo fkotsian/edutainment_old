@@ -19,12 +19,13 @@ describe "Authentication" do
 	  
 	  it { should have_selector('title', text: 'Sign in') }
 	  it { should have_selector('div.alert.alert-error', text: 'Invalid') }
-	
+	  
 	  describe "after visiting another page" do
 	    before { click_link "Home" }
 		it { should_not have_selector('div.alert.alert-error') }
 	  end
 	end
+	  
 	
 	describe "with valid information" do
 	  let(:user) { FactoryGirl.create(:user) }
@@ -42,6 +43,13 @@ describe "Authentication" do
 	  describe "followed by signout" do
 		before { click_link "Sign out" }
 		it { should have_link('Sign in') }
+	  
+	    describe "does not have 'Profile' and 'Settings' links" do
+	      it { should_not have_link('Users', 		href: users_path) }
+		  it { should_not have_link('Profile') }
+		  it { should_not have_link('Settings') }
+		  it { should_not have_link('Sign out', 	href: signout_path) }
+	    end
 	  end
 	end
   end
@@ -63,6 +71,19 @@ describe "Authentication" do
 		
 		  it "should render the desired protected page" do
 			page.should have_selector('title', text: 'Edit user')
+		  end
+		  
+		  describe "after signing in again" do
+		    before do
+			  visit signin_path
+			  fill_in "Email", 		with: user.email
+			  fill_in "Password", 	with: user.password
+			  click_button "Sign in"
+			end
+			
+			it "should render the default (profile) page" do
+			  page.should have_selector('title', text: user.name)
+			end
 		  end
 	    end
 	  end
@@ -111,6 +132,27 @@ describe "Authentication" do
 	  describe "submitting a DELETE request to the Users#destroy action" do
 	    before { delete user_path(user) }
 		specify { response.should redirect_to(root_path) }
+	  end
+	  
+	  describe "accessing the Users#new action" do
+	    before { get signup_path }		# GETting the signup_path (the Users#new action), as opposed to POSTing to it (the Users#create action)
+		specify { response.should redirect_to(root_path) }
+	  end
+	  
+	  describe "accessing the Users#create action" do
+	    before { post signup_path }		# POSTing to the signup_path, as opposed to just GETting it (the Users#new action)
+		specify { response.should redirect_to(root_path) }
+	  end
+	end
+	
+	describe "as admin user" do
+	  let(:admin) { FactoryGirl.create(:admin) }
+	  
+	  before { sign_in admin }
+	  
+	  describe "trying to delete itself" do
+	    before { delete user_path(admin) }
+		specify { response.should redirect_to(users_path) }
 	  end
 	end
   end	

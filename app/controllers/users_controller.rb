@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user,	only: [:index, :edit, :update]
+  before_filter :creating_while_signed_in,	only: [:new, :create]
   before_filter :correct_user, 		only: [:edit, :update]
   before_filter :admin_user, 		only: :destroy
+
   
   def index 
 	@users = User.paginate(page: params[:page])
@@ -13,6 +15,7 @@ class UsersController < ApplicationController
   
   def show
 	@user = User.find(params[:id])
+	@microposts = @user.microposts.paginate(page: params[:page])
   end
   
   def edit
@@ -40,9 +43,13 @@ class UsersController < ApplicationController
   end
   
   def destroy
-	User.find(params[:id]).destroy
-	flash[:success] = "User destroyed."
-	redirect_to users_path
+	if (current_user.admin? && current_user == User.find(params[:id]))
+	  redirect_to users_path, notice: "Try again to delete yourself, admin!"
+	else
+	  User.find(params[:id]).destroy
+	  flash[:success] = "User destroyed."
+	  redirect_to users_path
+	end
   end
   
   private
@@ -51,6 +58,12 @@ class UsersController < ApplicationController
 	  unless signed_in?
 	    store_location
 		redirect_to signin_path, notice: "Please sign in." 
+	  end
+	end
+	
+	def creating_while_signed_in
+	  if signed_in?
+	    redirect_to root_path, notice: "Sign out to create a new user!"
 	  end
 	end
 	
