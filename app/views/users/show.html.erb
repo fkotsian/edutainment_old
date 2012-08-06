@@ -1,20 +1,32 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-	<aside class="span4">
-		<section>
-			<h1>
-				<%= gravatar_for @user %>
-				<%= @user.name %>
-			</h1>
-		</section>
-	</aside>
-	<div class="span8">
-		<% if @user.microposts.any? %>
-			<h3>Microposts (<%= @user.microposts.count %>)</h3>
-			<ol class="microposts">
-				<%= render @microposts %>
+	<h1>
+		<%= @user.title>
+	</h1>
+</div>
+<div class="row">
+	<div class="center hero-unit">
+		<h2 class="center span4"><%= @user.description %></h2>
+		<h2>Featured Video:</h2>
+		<% if @user.videos.any? %>
+			<div class="span8">
+				<iframe width="560" height="315" src=<%= @user.videos.first.url %> frameborder="0" allowfullscreen></iframe>
+			<div>
+		<% end %>
+	</div>
+	<br />
+	<div class="center span6">
+		<% if @user.videos.any? %>
+			<div class="row">
+				<h3 class="span2">Videos: (<%= @user.videos.count %>)</h3>
+				<div class="span4">
+					<%= render searchbar %>
+				</div>
+			</row>
+			<ol class="videos">
+				<%= render @videos %>
 			</ol>
-			<%= will_paginate @microposts %>
+			<%= will_paginate @videos %>
 		<% end %>
 	</div>
 </div>

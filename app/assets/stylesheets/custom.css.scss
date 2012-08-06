@@ -169,6 +169,10 @@ input, textarea, select, .uneditable-input {
 	@extend .error;
 }
 
+.input-append button.add-on {
+	height: inherit !important;
+}
+
 /* USERS INDEX */
 
 .users {
@@ -182,4 +186,9 @@ input, textarea, select, .uneditable-input {
 			border-bottom: 1px solid $grayLighter;
 		}
 	}
+}
+
+/* VIDEOS INDEX */
+
+.videos {
 }

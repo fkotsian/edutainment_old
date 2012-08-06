@@ -1,5 +1,5 @@
-<% provide(:title, 'All Users') %>
-<h1>All Users</h1>
+<% provide(:title, 'Our Artists') %>
+<h1>Our Artists</h1>
  
 <%= will_paginate %>
  
@@ -7,6 +7,7 @@
 	<%= render @users %>
 </ul>
 <br />
-<%= link_to "Create a new user", new_user_path, class: "btn btn-large btn-primary" %>
-
+<% if current_user.admin? %>
+	<%= link_to "Create a new user", new_user_path, class: "btn btn-large btn-primary" %>
+<% end %>
 <%= will_paginate %>
