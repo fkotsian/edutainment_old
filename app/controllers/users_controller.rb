@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user,	only: [:index, :edit, :update]
+  before_filter :signed_in_user,	only: [:edit, :update]
   before_filter :creating_while_signed_in,	only: [:new, :create]
   before_filter :correct_user, 		only: [:edit, :update]
   before_filter :admin_user, 		only: :destroy
@@ -14,8 +14,14 @@ class UsersController < ApplicationController
   end
   
   def show
-	@user = User.find(params[:id])
-	@videos = @user.videos.paginate(page: params[:page])
+	if signed_in?
+		@user = User.find(params[:id]) # or current_user, if not in URL (which may be)
+		@videos = @user.videos.paginate(page: params[:page])		
+		render 'feed'
+	else
+		@user = User.find(params[:id])
+		@videos = @user.videos.paginate(page: params[:page])
+	end
   end
   
   def edit
@@ -25,7 +31,7 @@ class UsersController < ApplicationController
 	@user = User.new(params[:user])
   	if @user.save
 	  sign_in @user
-	  flash[:success] = "Welcome to the Sample App!"
+	  flash[:success] = "Welcome to EduTainment!"
 	  redirect_to @user
 	else
 	  render 'new'
