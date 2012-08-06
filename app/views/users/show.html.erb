@@ -1,21 +1,32 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-	<h1>
-		<%= @user.title %>
-	</h1>
+	<div class="span10">
+		<h1>
+			The Adventures of <%= @user.name %>
+		</h1>
+	</div>
+	<div class="span1">
+		<%= gravatar_for @user %>
+	</div>
 </div>
-<div class="row">
-	<div class="center hero-unit">
-		<h2 class="center span4"><%= @user.description %></h2>
-		<h2>Featured Video:</h2>
-		<% if @user.videos.any? %>
-			<div class="span8">
-				<iframe width="560" height="315" src=<%= @user.videos.first.url %> frameborder="0" allowfullscreen></iframe>
-			<div>
-		<% end %>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span6">
+			<h2>Featured Video:</h2>
+			<% if @user.videos.any? %>
+				<div class="span8">
+					<iframe width="560" height="315" src=<%= @user.videos.first.url %> frameborder="0" allowfullscreen></iframe>
+				<div>
+			<% end %>
+		</div>
+		<div class="span6">
+			<h2>
+				<%= @user.description %>
+			</h2>
+		</div>
 	</div>
 	<br />
-	<div class="center span6">
+	<div class="span6 offset3">
 		<% if @user.videos.any? %>
 			<div class="row">
 				<h3 class="span2">Videos: (<%= @user.videos.count %>)</h3>

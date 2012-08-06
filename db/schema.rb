@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120806014223) do
+ActiveRecord::Schema.define(:version => 20120806070417) do
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -39,12 +39,13 @@ ActiveRecord::Schema.define(:version => 20120806014223) do
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
   create_table "videos", :force => true do |t|
-    t.string   "url"
+    t.string   "vid_url"
     t.string   "title"
     t.integer  "views"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "description"
   end
 
 end

@@ -1,5 +1,7 @@
 SampleApp::Application.routes.draw do
-  resources :users
+  get "videos/favorite"
+
+  resources :users, :videos
   resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'

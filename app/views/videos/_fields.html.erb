@@ -1,0 +1,12 @@
+	<%= render 'shared/error_messages' %>
+
+	<%= f.label :title, "Title" %>
+	<%= f.text_field :title %>
+
+	<%= f.label :url, "URL" %>
+	<%= f.url_field :vid_url %>
+
+	<%= f.label :description %>
+	<%= f.text_area :description %>
+	
+	<%= f.hidden_field user: @user %> 
