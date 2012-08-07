@@ -160,6 +160,9 @@ input, textarea, select, .uneditable-input {
 	margin-bottom: 15px;
 	@include box_sizing;
 }
+input[type="text"], input[type="url"] {
+	height: 30px;
+}
 
 #error_explanation {
 	color: #f00;
@@ -174,8 +177,14 @@ input, textarea, select, .uneditable-input {
 	@extend .error;
 }
 
-.input-append button.add-on {
-	height: inherit !important;
+/* SEARCHBAR */
+
+.input-append button {
+	height: 36px;
+	width: 36px;
+}
+.input-append input {
+	height: 36px;
 }
 
 /* USERS INDEX */
@@ -195,5 +204,11 @@ input, textarea, select, .uneditable-input {
 
 /* VIDEOS INDEX */
 
-.videos {
+div.videos {
+	margin: 10px 0;
+	}
+div.videos .timestamp {	
+	margin: 0;
+	overflow: auto;
+	padding: 20px 0;
 }

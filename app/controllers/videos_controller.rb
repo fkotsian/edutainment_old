@@ -3,33 +3,34 @@ class VideosController < ApplicationController
   end
   
   def index 
-	@videos = Videos.paginate(page: params[:page])
-  end	  
-  
-  def new
-	@user = current_user
-	@video = Video.new(params[:video], user: @user)
-  end
-  
-  def show
 	if signed_in?
-		@user = User.find(params[:id]) # or current_user, if not in URL (which may be)
+		@user = User.find(params[:user_id]) # or current_user, if not in URL (which may be)
 		@videos = @user.videos.paginate(page: params[:page])		
 		render 'users#feed'
 	else
 		@user = User.find(params[:id])
 		@videos = @user.videos.paginate(page: params[:page])
 	end
+  end	  
+  
+  def new
+	@user = User.find(params[:user_id])
+	@video = @user.videos.build(views: 0)
+  end
+  
+  def show
+	@user = User.find(params[:id])
+	@video = @user.video(params[:video_id])
   end
   
   def edit
   end
   
   def create
-	@user = current_user
-	@video = Video.new(params[:video], user: current_user, views: 0)
-  	if @video.save
-	  flash[:success] = "Welcome to EduTainment!"
+	@user = User.find(params[:user_id])
+	@video = @user.videos.build(params[:video])
+	if @video.save
+	  flash[:success] = "Congrats on your new EduTainment!"
 	  redirect_to @video.user
 	else
 	  flash[:error] = params[:video]
@@ -50,9 +51,9 @@ class VideosController < ApplicationController
 	if (current_user.admin? && current_user == User.find(params[:id]))
 	  redirect_to users_path, notice: "Try again to delete yourself, admin!"
 	else
-	  Video.find(params[:id]).destroy
+	  deleted_vid = Video.find(params[:id]).destroy
 	  flash[:success] = "Video deleted."
-	  redirect_to @video.user
+	  redirect_to deleted_vid.user
 	end
   end  
 end

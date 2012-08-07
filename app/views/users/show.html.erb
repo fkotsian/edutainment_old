@@ -15,7 +15,7 @@
 			<h2>Featured Video:</h2>
 			<% if @user.videos.any? %>
 				<div class="span8">
-					<iframe width="560" height="315" src=<%= @user.videos.first.url %> frameborder="0" allowfullscreen></iframe>
+					<iframe width="560" height="315" src="#{@user.videos.first.vid_url}" frameborder="0" allowfullscreen></iframe>
 				<div>
 			<% end %>
 		</div>

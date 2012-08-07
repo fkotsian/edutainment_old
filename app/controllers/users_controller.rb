@@ -16,11 +16,11 @@ class UsersController < ApplicationController
   def show
 	if signed_in?
 		@user = User.find(params[:id]) # or current_user, if not in URL (which may be)
-		@videos = @user.videos.paginate(page: params[:page])		
-		render 'feed'
+		@videos = @user.videos.all	#.paginate(page: params[:page])		
+		render 'dashboard'
 	else
 		@user = User.find(params[:id])
-		@videos = @user.videos.paginate(page: params[:page])
+		@videos = @user.videos.all	#.paginate(page: params[:page])
 	end
   end
   
