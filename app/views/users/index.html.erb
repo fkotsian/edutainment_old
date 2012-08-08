@@ -2,14 +2,9 @@
 <h1>Our Artists</h1>
  
 <%= will_paginate %>
- 
-<ul class="users">
-	<br />
-	<%= render @users %>
-	<br />
-</ul>
 <br />
-<% if current_user.admin? %>
-	<%= link_to "Create a new user", new_user_path, class: "btn btn-large btn-primary" %>
-<% end %>
+ <div class="row users">
+	<%= render @users %>
+</div>
+<br />
 <%= will_paginate %>

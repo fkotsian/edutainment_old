@@ -1,8 +1,16 @@
-<li>
-	<%= gravatar_for user, size: 52 %>
-	<%= link_to "#{user.title}", user, class: "users" %> 
-	<% if current_user.admin? || (current_user?(user)) %>
-	|  <%= link_to "delete", user, method: :delete, 
-									 data: { confirm: "Are you sure?" } %>
-	<% end %>
-</li>
+	<div class="row">
+		<div class="span3 content">
+			<% if user.videos.any? %>
+				<iframe class="content" width="260" height="180" src="<%= user.videos.first.vid_url %>" frameborder="10" allowfullscreen></iframe>
+			<% else gravatar_for user, size: 52 %>
+			<% end %>
+		</div>
+		<div class="span3 offset1">
+			<br /><br /><br /><br />
+			<%= link_to "#{user.title}", user, class: "users" %>
+		</div>
+		<div class="span3 offset1">
+			<p><%= user.description %>
+		</div>
+	</div>
+	<br />

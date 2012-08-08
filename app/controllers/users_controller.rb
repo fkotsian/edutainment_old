@@ -14,12 +14,11 @@ class UsersController < ApplicationController
   end
   
   def show
-	if signed_in?
-		@user = User.find(params[:id]) # or current_user, if not in URL (which may be)
+	@user = User.find(params[:id]) # or current_user, if not in URL (which may be)
+	if signed_in? && current_user?(@user)
 		@videos = @user.videos.all	#.paginate(page: params[:page])		
 		render 'dashboard'
 	else
-		@user = User.find(params[:id])
 		@videos = @user.videos.all	#.paginate(page: params[:page])
 	end
   end

@@ -1,10 +1,28 @@
-<% provide(:title, "Edit Profile") %>
+<% provide(:title, "My Dashboard") %>
 <div class="container">
 	<div class="row">
-		<div class="span8 users">
-			<%= render @user %>
+		<div class="span12 center users">
+			<h1><%= @user.title %></h1>
+			<div class="row-fluid">
+				<div class="span7">
+					<h2 class="pull-right">With <%= @user.name %></h2>
+				</div>
+				<div class="span5 pull-left">
+					<%= gravatar_for @user %>
+				</div>
+			</div>
+			<br /><br />
+			<div class="row">
+				<div class="span8 offset2">
+					<p>
+						<%= @user.description %>
+					</p>
+					<br />
+				</div>
+			</div>
 		</div>
 	</div>
+	
 	<br />
 	<% if @user.videos.any? %>
 		<div class="row">
@@ -14,6 +32,7 @@
 			<div class="span4 offset6 pull-right">
 				<%= render 'shared/searchbar' %>
 			</div>
+			</br>
 		</div>
 		<div class="row videos">
 			

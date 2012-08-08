@@ -1,45 +1,51 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-	<div class="span10">
-		<h1>
-			The Adventures of <%= @user.name %>
-		</h1>
-	</div>
-	<div class="span1">
-		<%= gravatar_for @user %>
-	</div>
-</div>
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="span6">
-			<h2>Featured Video:</h2>
-			<% if @user.videos.any? %>
-				<div class="span8">
-					<iframe width="560" height="315" src="#{@user.videos.first.vid_url}" frameborder="0" allowfullscreen></iframe>
-				<div>
-			<% end %>
-		</div>
-		<div class="span6">
-			<h2>
-				<%= @user.description %>
-			</h2>
-		</div>
-	</div>
-	<br />
-	<div class="span6 offset3">
-		<% if @user.videos.any? %>
+<div class="container">
+	<div class="row">
+		<div class="span12 center users">
+			<h1><%= @user.title %></h1>
 			<div class="row">
-				<h3 class="span2">Videos: (<%= @user.videos.count %>)</h3>
-				<div class="span4">
-					<%= render searchbar %>
+				<div class="span4 offset6">
+					<h2 class="pull-right">With <%= @user.name %></h2>
 				</div>
-			</row>
-			<ol class="videos">
-				<%= render @videos %>
-			</ol>
-			<%= will_paginate @videos %>
-		<% end %>
+				<div class="span2">
+					<%= gravatar_for @user %>
+				</div>
+			</div>
+			<br />
+			<div class="row">
+				<div class="span6 offset3">
+					<p>
+						<%= @user.description %>
+					</p>
+					<br /><br />
+					<div class="row">
+						<div class="span6">
+							<% if @user.videos.any? %>
+								<iframe width="460" height="315" src="<%= @user.videos.first.vid_url %>" frameborder="10" allowfullscreen></iframe>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br />
+			<% if @user.videos.any? %>
+				<div class="row">
+					<div class="span2">
+						<h3>Videos: (<%= @user.videos.count %>)</h3>
+					</div>
+					<div class="span4 offset6 pull-right">
+						<%= render 'shared/searchbar' %>
+					</div>
+				</div>
+				<div class="row videos">
+					<%= render @videos %>
+				</div>
+			<% end %>
+			<div class="row">
+				<p>Name: <%= @user.name %></p>
+				<p>Email: <%= @user.email %></p>
+			</div>
+		</div>
 	</div>
 </div>
-<p>Name: <%= @user.name %></p>
-<p>Email: <%= @user.email %></p>
+
