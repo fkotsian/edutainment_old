@@ -39,9 +39,10 @@ namespace :db do
 				   password: password,
 				   password_confirmation: password)
 	end
+
 	users = User.all(limit: 6)
+	v_url = "http://www.youtube.com/embed/hX1YVzdnpEc"
 	3.times do
-	  v_url = "http://www.youtube.com/embed/hX1YVzdnpEc"
 	  users.each { |user| user.videos.create!(title: "Sample Barack Video",
 											  vid_url: v_url,
 											  description: "Can't get enough of this one. Obama2012!") 
