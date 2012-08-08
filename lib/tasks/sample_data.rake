@@ -32,7 +32,7 @@ namespace :db do
 	  email = "example-#{n+1}@example.com"
 	  password = "password"
 	  User.create!(name: name,
-				   title: title,
+				   title: titl,
 				   nickname: nick,
 				   email: email,
 				   password: password,
