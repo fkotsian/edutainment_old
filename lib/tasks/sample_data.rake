@@ -50,7 +50,8 @@ namespace :db do
 	admin.videos.create!(title: "Math, Math, Math...",
 						vid_url: "http://www.youtube.com/embed/pn1VGytzXus",
 						description: "The #1 Hit from Big Sean")
-  	standards.videos.create!(title: "4th Grader Raps about Place Value",
+
+	standards.videos.create!(title: "4th Grader Raps about Place Value",
 							 vid_url: "http://www.youtube.com/embed/bWgZsJmATsI",
 							 description: "Join the thousands of parents, teachers, and kids who are Rockin the Standards across the nation!")
 							 

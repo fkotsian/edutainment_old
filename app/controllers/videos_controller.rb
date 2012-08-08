@@ -3,15 +3,14 @@ class VideosController < ApplicationController
   end
   
   def index 
-	if signed_in?
-		@user = User.find(params[:user_id]) # or current_user, if not in URL (which may be)
-		@videos = @user.videos.paginate(page: params[:page])		
-		render 'users#feed'
+	@user = User.find(params[:id]) # or current_user, if not in URL (which may be)
+	if signed_in? && current_user?(@user)
+		@videos = @user.videos.all	#.paginate(page: params[:page])		
+		render 'users/dashboard'
 	else
-		@user = User.find(params[:id])
-		@videos = @user.videos.paginate(page: params[:page])
+		@videos = @user.videos.all	#.paginate(page: params[:page])
 	end
-  end	  
+  end  
   
   def new
 	@user = User.find(params[:user_id])
