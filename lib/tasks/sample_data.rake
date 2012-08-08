@@ -25,30 +25,9 @@ namespace :db do
 							 vid_url: "http://www.youtube.com/embed/iaU1eX_DPkY",
 							 description: "Daaaamn these kids are into this song!")
 							 
-	98.times do |n|
-	  name = Faker::Name.name
-	  titl = "The Algebraic Adventures of an Ordinary Guy or Gal"
-	  nick = "Dr. Boss"
-	  email = "example-#{n+1}@example.com"
-	  password = "password"
-	  User.create!(name: name,
-				   title: titl,
-				   nickname: nick,
-				   email: email,
-				   password: password,
-				   password_confirmation: password)
-	end
-	users = User.all(limit: 6)
-	3.times do
-	  v_url = "http://www.youtube.com/embed/hX1YVzdnpEc"
-	  users.each { |user| user.videos.create!(title: "Sample Barack Video",
-											  vid_url: v_url,
-											  description: "Can't get enough of this one. Obama2012!") 
-		}
-	end
-	admin.videos.create!(title: "Math, Math, Math...",
-					 vid_url: "http://www.youtube.com/embed/pn1VGytzXus",
-					 description: "The #1 Hit from Big Sean")
 
+	admin.videos.create!(title: "Math, Math, Math...",
+						vid_url: "http://www.youtube.com/embed/pn1VGytzXus",
+						description: "The #1 Hit from Big Sean")
   end
 end
