@@ -6,9 +6,5 @@
 		<br />
 		<br />
 		Created <%= time_ago_in_words(video.created_at) %> ago.
-		<% if signed_in? && ( current_user.admin? || current_user?(video.user)) %>
-		|  <%= link_to "delete", , method: :delete, 
-										 data: { confirm: "Are you sure?" } %>
-		<% end %>
 	</div>
 	<div class="span1"><p></p></div>
