@@ -1,32 +1,30 @@
-<div class="center hero-unit">
-	<h1>Welcome to EDUtainment</h1>
-	<h2>School House Rock for the 21st Century!</h2>
-	<h2>We're creating Math and Science videos to engage the next generation</h2>
-	<h2>of scientists, mathematicians, and engineers!</h2>
+<div class="container">
+	<div class="center hero-unit">
+		<h3>We're creating Math and Science videos <br /> to engage the next generation 
+		of scientists, mathematicians, and engineers!</h3>	
+		<iframe width="560" height="315" src="http://www.youtube.com/embed/EnK4Iu25Jkk" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 
-	<h3>
-		We're currently developing our characters. Check out the Mathman and Dr. MADD below:
-	</h3>
-	
-	<div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span6">
-				<iframe class="video-box" src="http://player.vimeo.com/video/59434151" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+		<div class="row">
+			<div class="center hero-unit">
+			<h3>
+				We're developing every day. Check out samples of the Mathman and Dr. MADD below:
+			</h3>
+			<div class="row-fluid">
+				<div class="span6">
+					<iframe class="video-box" src="http://player.vimeo.com/video/59434151" width="195" height="145" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+				</div>
+				<div class="span6">
+					<iframe class="video-box" src="http://www.youtube.com/embed/fiVeNI8R2e0" width="195" height="145" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+				</div>
 			</div>
-			<div class="span6">
-				<iframe class="video-box" src="http://www.youtube.com/embed/fiVeNI8R2e0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-			</div>
-		</div>
-	</div>
-	<div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span12">
-				<h4>Sign up to reserve your space in our Launch Beta!</h4>
-				<br />
-				<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+			<div class="row-fluid">
+				<div class="span12">
+					<h4>Sign up to reserve your space in our Launch Beta, or holler at us on Twitter!</h4>
+					<br />
+					<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+					<%= link_to image_tag("twitter-bird-blue-on-white.png", alt: "Holler at us on Twitter!", width: "50", height: "50"), "http://twitter.com/letsedutain/" %>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-<%= link_to image_tag("EDU_logo_sized.jpg", alt: "EDUtainment!"), 'https://edutainment.herokuapp.com' %>

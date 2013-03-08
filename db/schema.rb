@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(:version => 20120806070417) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           :default => false
-    t.string   "title",           :default => "The Adventures of Dr. Boss"
-    t.string   "description",     :default => "Dr. Boss is the main man of rap, the siren of soul, and the reckoning of R&B. With his patented flow, he unleashes melodies of mathematical mastery on his mesmerized students. He looks a lot like Russell Simmons."
-    t.string   "nickname",        :default => "Dr. Boss"
+    t.string   "title",           :default => "The Adventures of The Boss"
+    t.string   "description",     :default => "The Boss is the main man of rap, the siren of soul, and the reckoning of R&B. With his patented flow, he unleashes melodies of mathematical mastery on his mesmerized students."
+    t.string   "nickname",        :default => "The Boss"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

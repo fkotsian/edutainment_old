@@ -29,7 +29,7 @@ class VideosController < ApplicationController
 	@user = User.find(params[:user_id])
 	@video = @user.videos.build(params[:video])
 	if @video.save
-	  flash[:success] = "Congrats on your new EduTainment!"
+	  flash[:success] = "Congrats on your new swag!"
 	  redirect_to @video.user
 	else
 	  flash[:error] = params[:video]
@@ -39,7 +39,7 @@ class VideosController < ApplicationController
   
   def update
 	if @video.update_attributes(params[:video])
-	  flash[:success] = "Your video has been updated"
+	  flash[:success] = "Your video has been updated."
 	  redirect_to @video.user
     else 
 	  render 'edit'
