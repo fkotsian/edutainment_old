@@ -1,4 +1,6 @@
 SampleApp::Application.routes.draw do
+  resources :standards
+
   get "videos/favorite"
 
   resources :users do
