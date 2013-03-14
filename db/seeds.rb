@@ -24,12 +24,12 @@ users = User.create[{name: "Lybroan James",
 Video.create(title: "The Mathman Begins",
 			 url: "http://vimeo.com/59434151",
 			 description: "The Mathman enters the scene, clean as can be. Check out this smooth cat as jams through the city streets, keepin' his math on his mind and his mind on his math. Solve for X.",
-			 user: users.first)
+			 user: Users.first)
 			 
 Video.create(title: "Elements & Compounds",
 			 url: "https://www.youtube.com/watch?feature=player_embedded&v=fiVeNI8R2e0",
 			 description: "Ever wonder what science has in common with hip-hop? Thinkin', \"What WAS that?\" Ahahahahaha. Let Dr. MADD break it down for you, Science style.",
-			 user: users.last)
+			 user: Users.at(2))
 			 
 Video.create(title: "Lab Safety",
 			 url: "https://www.youtube.com/watch?v=qRoDR6TPBpk",

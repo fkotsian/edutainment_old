@@ -2,10 +2,8 @@
 	<div class="span4 content">
 		<iframe class="content" width="260" height="180" src="<%= video.vid_url %>" frameborder="10" allowfullscreen></iframe>
 	</div>
-	<div class="span4 content">
-		<%= video.description %>
-	</div>
-	<div class="span1 timestamp">
+
+	<div class="span1 offset1 timestamp">
 		<br />
 		<br />
 		Created <%= time_ago_in_words(video.created_at) %> ago.
