@@ -18,7 +18,7 @@ users = User.create[{name: "Lybroan James",
 					 nickname: "Dr. MADD",
 					 description: " I'm a spicy meatball with a side of pastrami. You never know what I'm going to do next - JUST LIKE IN SCIENCE! Ahahahahaha. What was that? Whatever, back to the lab!",
 					 email: "mjm044@mail.harvard.edu",
-					 password: "drmadd"
+					 password: "drmadd",
 					 password_confirmation: "drmadd"}]
 					 
 Video.create(title: "The Mathman Begins",
