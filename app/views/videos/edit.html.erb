@@ -1,0 +1,18 @@
+<% provide(:title, "Edit video") %>
+<h1>Update your video</h1>
+
+<div class="row">
+	<%= render 'video', f: f %>
+	
+	<div class="span6 offset5">
+		<%= form_for(@user) do |f| %>
+
+			<%= render 'fields', f: f %>
+			<%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+		
+		<% end %>
+		
+		<%= gravatar_for @user %>
+		<%= link_to "Change", "http://gravatar.com/emails", target: "_blank" %>
+	</div>
+</div>
