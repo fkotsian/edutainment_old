@@ -4,9 +4,14 @@ class Video < ActiveRecord::Base
   #has_many followers // or followed_by [list of followers?]
   
   before_save do |video| 
-		watch_regex = /watch['?]v=/
-		strip_regex = /&.*/
-		video.vid_url = vid_url.sub(watch_regex, "embed/").sub(strip_regex, "")		
+		if video.vid_url.include? "you" 
+			watch_regex = /watch['?]v=/
+			strip_regex = /&.*/
+			video.vid_url = vid_url.sub(watch_regex, "embed/").sub(strip_regex, "")	
+		elsif video.vid_url.include? "vimeo"
+			vid_id = vid_url.slice(/\d+/i)
+			video.vid_url = "http://player.vimeo.com/video/".concat(vid_id)
+		end
   end
   
   validates :title, presence: true, length: { maximum: 60 }
