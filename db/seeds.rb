@@ -16,7 +16,7 @@ users = User.create[{name: "Lybroan James",
 				   [{name: "Mary Jo Madda",
 					 title: "Dr. MADD's Lab",
 					 nickname: "Dr. MADD",
-					 description: " I'm a spicy meatball with a side of pastrami. You never know what I'm going to do next - JUST LIKE IN SCIENCE! Ahahahahaha. What was that? Whatever, back to the lab!",
+					 description: "I'm a spicy meatball with a side of pastrami. You never know what I'm going to do next - JUST LIKE IN SCIENCE! Ahahahahaha. What was that? Whatever, back to the lab!",
 					 email: "mjm044@mail.harvard.edu",
 					 password: "drmadd",
 					 password_confirmation: "drmadd"}]
@@ -27,11 +27,11 @@ Video.create(title: "The Mathman Begins",
 			 user: users.first)
 			 
 Video.create(title: "Elements & Compounds",
-			 url: "https://www.youtube.com/watch?feature=player_embedded&v=fiVeNI8R2e0"
-			 description: "Ever wonder what science has in common with hip-hop? Thinkin', \"What WAS that?\" Ahahahahaha. Let Dr. MADD break it down for you, Science style."
+			 url: "https://www.youtube.com/watch?feature=player_embedded&v=fiVeNI8R2e0",
+			 description: "Ever wonder what science has in common with hip-hop? Thinkin', \"What WAS that?\" Ahahahahaha. Let Dr. MADD break it down for you, Science style.",
 			 user: users.last)
 			 
 Video.create(title: "Lab Safety",
-			 url: "https://www.youtube.com/watch?v=qRoDR6TPBpk"
+			 url: "https://www.youtube.com/watch?v=qRoDR6TPBpk",
 			 description: "Get Safe with Dr. MADD! Just remember - she's crazy, but not too crazy -- BECAUSE THAT WOULD BE CALLED INSANE! Ahahahahaha. What WAS that?",
 			 user: users.last)
